@@ -14,7 +14,7 @@ app.use(cors());
 connectDB();
 
 app.get("/", (req, res) => {
-  res.status(200).send("Welcome to Our Api");
+  res.status(200).send("Welcome to Our Recipe Api");
 });
 
 app.use("/api/recipes",recipeRouter)

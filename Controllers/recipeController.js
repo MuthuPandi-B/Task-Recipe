@@ -8,7 +8,7 @@ export const createrecipe = async (req, res) => {
     await newrecipe.save(); //saving the deatils in mongodb
     res
       .status(200)
-      .json({ message: "recipe added Successfully", data: newrecipe });
+      .json({ message: "Recipe added Successfully", data: newrecipe });
   } catch (error) {
     res.status(500).json({
       message: error.message,
@@ -23,7 +23,7 @@ export const getAllrecipes = async (req, res) => {
     const getrecipe = await recipes.find();
     res
       .status(200)
-      .json({ message: "recipes retrieved successfully", data: getrecipe });
+      .json({ message: "Recipes retrieved successfully", data: getrecipe });
   } catch (error) {
     res.status(500).json({
       message: error.message,
@@ -37,11 +37,11 @@ export const getrecipeById = async (req, res) => {
     const recipeId = req.params.id;
     const recipe = await recipes.findById(recipeId);
     if (!recipe) {
-      return res.status(404).json({ message: "recipe Not Found" });
+      return res.status(404).json({ message: "Recipe Not Found" });
     }
     res
       .status(200)
-      .json({ message: "recipe retrieved successfully", data: recipe });
+      .json({ message: "Recipe retrieved successfully", data: recipe });
   } catch (error) {
     res.status(500).json({
       message: error.message,
@@ -61,9 +61,9 @@ export const updaterecipe = async (req, res) => {
       {new:true},
     );
     if (result.matchedCount === 0) {
-      return res.status(404).json({ message: "recipe Not Found" });
+      return res.status(404).json({ message: "Recipe Not Found" });
     }
-    res.status(200).json({ message: "recipe Updated", data: result });
+    res.status(200).json({ message: "Recipe Updated", data: result });
   } catch (error) {
     res.status(500).json({
       message: error.message,
@@ -79,10 +79,10 @@ export const deleterecipe = async(req,res)=>{
         const recipeId = req.params.id;
         const result = await recipes.findByIdAndDelete({_id:recipeId}) 
         if(!result){
-            return res.status(404).json({ message: "recipe Not Found" });
+            return res.status(404).json({ message: "Tecipe Not Found" });
         } 
         const recipe = await recipes.find();
-        res.status(200).json({message:"recipe deleted", data:recipe})
+        res.status(200).json({message:"Recipe deleted", data:recipe})
         
     } catch (error) {
         res.status(500).json({
